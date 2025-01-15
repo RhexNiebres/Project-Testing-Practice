@@ -1,5 +1,5 @@
 const { template } = require('@babel/core');
-const {sum, capitalize, reverseString, calculator } = require('./sum')
+const {sum, capitalize, reverseString, calculator, caesarCipher } = require('./sum')
 
 
 test('adds 1 + 2 to equal 3', () => {
@@ -35,5 +35,27 @@ describe('Calculator Operations', () =>{
     
     test ('throw error  dividing by zero', ()=> {
         expect(()=>calculator.divide(20,0)).toThrow('Cannot divide by zero')
+    });
+});
+
+describe('Caesar Cipher', () => {
+    test('shifts alphabetic characters correctly', () => {
+      expect(caesarCipher('abc', 3)).toBe('def');
+    });
+
+    test('wraps from z to a', () => {
+        expect(caesarCipher('xyz', 3)).toBe('abc');
+    });
+
+    test('preserves uppercase and lowercase letters', () => {
+        expect(caesarCipher('HeLLo', 3)).toBe('KhOOr');
+    });
+
+    test('handles large positive shifts', () => {
+        expect(caesarCipher('abc', 29)).toBe('def'); // Shift of 29 is equivalent to shift of 3
+    });
+
+    test('handles large negative shifts', () => {
+        expect(caesarCipher('def', -29)).toBe('abc'); // Shift of 29 is equivalent to shift of 3
     });
 });

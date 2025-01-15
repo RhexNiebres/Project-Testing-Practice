@@ -30,12 +30,27 @@ const calculator = {
     multiply: (a, b) => a * b,
 }
 
-function caesarCipher(str){
-    if (typeof str !== 'string') {
-        throw new TypeError('Input must be a string');
-      }
-    if(str.length === 0) return str;{
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-}
+function caesarCipher(str, shift) {
+    const shiftChar = (char, shift) => {
+      const isUpperCase = char >= 'A' && char <= 'Z';//Check characters
+      const isLowerCase = char >= 'a' && char <= 'z';
+      if (!isUpperCase && !isLowerCase) return char; //Non-alphabetical characters returned as is
+  
+      const charCode = char.charCodeAt(0);//Pet char ASCII codde
+      const base = isUpperCase ? 'A'.charCodeAt(0) : 'a'.charCodeAt(0);
+  
+      // Perform the shift and wrap around using modulo
+      return String.fromCharCode(((charCode - base + shift) % 26 + 26) % 26 + base);
+    };
+  
+    return str
+      .split('')
+      .map((char) => shiftChar(char, shift))
+      .join('');
+  }
+  console.log(caesarCipher('xyz', 3));
+  console.log(caesarCipher('HeLLo', 3));
+  console.log(caesarCipher('HeLLo, World', 3));
+
+
 module.exports ={sum, capitalize, reverseString, calculator, caesarCipher} ;
