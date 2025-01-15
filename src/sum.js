@@ -48,9 +48,37 @@ function caesarCipher(str, shift) {
       .map((char) => shiftChar(char, shift))
       .join('');
   }
+
+  function analyzeArray(arr){
+    if (arr.length === 0) {
+        return {
+          average: 0,
+          min: null,
+          max: null,
+          length: 0
+        };
+      }
+
+      const sum = arr.reduce((acc, num) => acc + num, 0);
+      const average = sum / arr.length;
+
+      const min = Math.min(...arr);
+      const max = Math.max(...arr);
+
+      const length = arr.length;
+
+      return {
+        average,
+        min,
+        max,
+        length
+      };
+  }
+
+
   console.log(caesarCipher('xyz', 3));
   console.log(caesarCipher('HeLLo', 3));
   console.log(caesarCipher('HeLLo, World', 3));
 
 
-module.exports ={sum, capitalize, reverseString, calculator, caesarCipher} ;
+module.exports ={sum, capitalize, reverseString, calculator, caesarCipher, analyzeArray} ;

@@ -1,5 +1,5 @@
 const { template } = require('@babel/core');
-const {sum, capitalize, reverseString, calculator, caesarCipher } = require('./sum')
+const {sum, capitalize, reverseString, calculator, caesarCipher, analyzeArray } = require('./sum')
 
 
 test('adds 1 + 2 to equal 3', () => {
@@ -51,7 +51,20 @@ describe('Caesar Cipher', () => {
         expect(caesarCipher('HeLLo', 3)).toBe('KhOOr');
     });
 
-    test('preserves puntuation and uppercase', () => {
-        expect(caesarCipher('HeLLo, World!', 3)).toBe('KhOOr,Zruogi!');
+    test('preserves punctuation and uppercase', () => {
+        expect(caesarCipher('HeLLo,World!', 3)).toBe('KhOOr,Zruog!');
+    });
+});
+
+describe('analyzeArray', () =>{
+    test('calculates average, min, max and length correctly',() => {
+        const object = analyzeArray([1,8,3,4,2,6]);
+
+        object == {
+           average: 4,
+           min: 1,
+           max: 8,
+           length: 6
+        };
     });
 });
