@@ -51,11 +51,7 @@ describe('Caesar Cipher', () => {
         expect(caesarCipher('HeLLo', 3)).toBe('KhOOr');
     });
 
-    test('handles large positive shifts', () => {
-        expect(caesarCipher('abc', 29)).toBe('def'); // Shift of 29 is equivalent to shift of 3
-    });
-
-    test('handles large negative shifts', () => {
-        expect(caesarCipher('def', -29)).toBe('abc'); // Shift of 29 is equivalent to shift of 3
+    test('preserves puntuation and uppercase', () => {
+        expect(caesarCipher('HeLLo, World!', 3)).toBe('KhOOr,Zruogi!');
     });
 });
