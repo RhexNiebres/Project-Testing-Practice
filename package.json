@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "build": "webpack",
-  "dev": "webpack serve",
-  "deploy": "git subtree push --prefix dist origin gh-pages"
-},
+    "build": "webpack",
+    "dev": "webpack serve",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RhexNiebres/Webpack-Template.git"
@@ -23,10 +24,12 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.3",
+    "jest": "^29.7.0",
     "style-loader": "^4.0.0",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
